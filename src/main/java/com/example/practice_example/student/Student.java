@@ -1,8 +1,22 @@
 package com.example.practice_example.student;
 
-import java.time.LocalDate;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Locale;
+
+@Entity
+@Table
 public class Student {
+    @Id
+    @SequenceGenerator(name = "sudent_sequence",
+                       sequenceName = "sudent_sequence",
+                       allocationSize = 1)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    )
     private long id;
     private String name;
     private String email;
